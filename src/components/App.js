@@ -5,6 +5,7 @@ import ListingsContainer from "./ListingsContainer";
 function App() {
   const [listings, setListings]=useState([]);
   const [searched, setSearched]=useState([]);
+  const [isAlpha, setIsAlpha]=useState(false)
 
   useEffect(()=>
   {
@@ -31,8 +32,14 @@ function App() {
   
   return (
     <div className="app">
-      <Header searchSubmitted={searchSubmitted} />
-      <ListingsContainer itemWasDelted={itemWasDelted} listings={searched}/>
+      <Header 
+        alphabeticalSort={setIsAlpha}
+        isAlpha={isAlpha}
+        searchSubmitted={searchSubmitted} />
+      <ListingsContainer 
+        isAlpha={isAlpha}
+        itemWasDelted={itemWasDelted} 
+        listings={searched}/>
     </div>
   );
 }
